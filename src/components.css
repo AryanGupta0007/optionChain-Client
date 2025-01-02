@@ -1,0 +1,24 @@
+th {
+    border: 2px solid white;
+  }
+
+tr td{
+    border: 1px solid grey;
+}
+
+.call-td-itm{
+    background-color: #D4EFDF;
+    color: #1D8348;
+}
+.call-td-otm{
+    background-color: #FCF3CF;
+    color: #9A7D0A;
+}
+.put-td-itm{
+    background-color: #FCF3CF;
+    color: #9A7D0A;
+}
+.put-td-otm{
+    background-color: #D4EFDF;
+    color: #1D8348;
+}
