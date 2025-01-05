@@ -78,7 +78,9 @@ CORS(app)
 @app.route('/api/getChain', methods=["GET", "POST"])
 def sendChain():
     if request.method == "POST":
+
         data = request.json  # Parse the JSON data from the POST request
+#         return data
         index = data.get("index")
         noOfRows = int(data.get("rows", 0))  # Default to 0 if not provided
         expiry = data.get("expiry")
