@@ -1,0 +1,5 @@
+1. add option for fetching symbols
+2. function that auto updates instrument.csv
+3. show future's  value on the header
+4. check below table border
+5. implement web socket

@@ -22,6 +22,7 @@ export const FinalRow = () => {
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
         <td>{sumPutVol}</td>
         <td>{sumPutOiChg}</td>
         <td>{sumPutOi}</td>

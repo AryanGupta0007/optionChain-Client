@@ -3,11 +3,13 @@ import {TableContext} from "../contexts/TableContext.js";
 import {InputsContext} from "../contexts/InputsContext.js";
 export const Button = (props) => {
     const { fetchRows } = useContext(TableContext)
-    const { inputsState ,dropState } = useContext(InputsContext)
+    const { inputsState ,dropState, requestState, setRequestState } = useContext(InputsContext)
     const { title, type, move, color, marginRight} = props;
     const onClick = () => {
         if (title === "Update"){
-            fetchRows(dropState, inputsState["expiry-drop"], inputsState["rows-count"])
+            const currentInputsState = {...inputsState}
+            setRequestState(currentInputsState)
+            fetchRows(requestState["oc-symbol"], requestState["expiry-drop"], requestState["rows-count"], requestState["checkbox"])
         }
     }
     const getFontColor = () => {
@@ -36,7 +38,7 @@ export const Button = (props) => {
     `.trim();
 
     return (
-        <div className="font-[sans-serif] space-x-4 space-y-4 text-center" style={{marginTop: "1vh"}}>
+        <div className="font-[sans-serif] space-x-4 space-y-4 text-center" style={{marginTop: "1vh", marginLeft: "2vw"}}>
             <button type={props.type ? props.type : "button"}
                className={buttonClasses} style={{backgroundColor: "white", marginLeft: "7vw", width: "7vw", height: "4vh", borderRadius: "0", marginTop: "1vh", paddingTop: "1vh"}}
             onClick={onClick}

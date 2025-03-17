@@ -12,7 +12,7 @@ export const TableState = (props) => {
   const [sumPutOi, setSumPutOi ] = useState(0)
   const [sumPutOiChg, setSumPutOiChg] = useState(0)
   const [sumPutVol, setSumPutVol] = useState(0)
-  const fetchRows = async (index, expiry, rowCount) => {
+  const fetchRows = async (index, expiry, rowCount, checkbox) => {
     try {
       console.log("fetching..")
       const url = "http://127.0.0.1:5002/api/getChain";
@@ -22,7 +22,8 @@ export const TableState = (props) => {
         body: JSON.stringify({
             index: index,
             expiry: expiry,
-            rows: rowCount
+            rows: rowCount,
+            checkbox: checkbox
         })
       });
       const finalResponse = await response.json();

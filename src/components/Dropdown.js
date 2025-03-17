@@ -28,7 +28,7 @@ export const Dropdown = (props) => {
                         <option key={index} value={e}>
                             {e}
                         </option>
-                    );
+                    )
                 })}
             </select>
         </div>

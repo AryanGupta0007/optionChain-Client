@@ -34,11 +34,12 @@ export const TableRow = ({ row, marketPrice }) => {
       <td className={callClass}>{row.calls.IV}</td>
       <td className={callClass}>{row.calls.ltp}</td>
       <td className={callClass}>{row.calls.chg}</td>
-      <td className={callClass}>{row.calls.bid}</td>
+      <td className={callClass}>{row.calls.bidQty}</td>
       <td className={callClass}>{row.calls.bid}</td>
       <td className={callClass}>{row.calls.ask}</td>
       <td className={callClass}>{row.calls.askQty}</td>
       <td className={strikeClass}>{row.strike}</td>
+      <td className={strikeClass}>{row.synthetic}</td>
       <td className={putClass}>{row.puts.bidQty}</td>
       <td className={putClass}>{row.puts.bid}</td>
       <td className={putClass}>{row.puts.ask}</td>

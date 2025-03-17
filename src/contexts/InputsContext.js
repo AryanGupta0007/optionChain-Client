@@ -3,14 +3,16 @@ import {createContext, useState} from 'react'
 export const InputsContext = createContext()
 export const InputsState = (props) => {
     const [inputsState, setInputsState] = useState({
-        "rows-count": 30, "expiry-drop": "02-01-2025"
+        "rows-count": 30, "expiry-drop": "16-01-2025", "oc-symbol": "NIFTY", "checkbox": "off"
     })
-    const [dropState, setDropState] = useState("NIFTY")
+    const [requestState, setRequestState] = useState({
+        "rows-count": 30, "expiry-drop": "16-01-2025", "oc-symbol": "NIFTY", "checkbox": "off" 
+    })
+    const [dropState, setDropState] = useState("NIFTY") //
     const [options, setOptions] = useState([])
     const updateExpiry = () => {
         inputsState["expiry-drop"] = options[0]
     }
-
     const updateDropState = async (value) => {
         await setDropState(value)
         await getOptions(value)
@@ -18,6 +20,14 @@ export const InputsState = (props) => {
     }
     const updateInputState = (name, value) => {
         const currentState = {...inputsState}
+        if (name === "oc-symbol"){
+            currentState[name] = value
+            setInputsState(currentState)
+            setTimeout(()=> {
+                console.log("getting value of option for ", currentState[name])
+                getOptions(value)
+            }, 2000)
+        }
         currentState[name] = value
         setInputsState(currentState)
     }
@@ -41,7 +51,7 @@ export const InputsState = (props) => {
         return finalResponse
     }
     return <InputsContext.Provider
-        value={{updateInputState, inputsState, getOptions, options, dropState, updateDropState}}>
+        value={{updateInputState, inputsState, requestState, setRequestState, getOptions, options, dropState, updateDropState}}>
         {props.children}
     </InputsContext.Provider>
 }
